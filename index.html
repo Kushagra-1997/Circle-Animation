@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colliding circle</title>
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .box_1 {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            height: 20vw;
+            width: 20vw;
+            background-color: lightgreen;
+            border-radius: 50%;
+            z-index: 1;
+            transform: translateY(-50%);
+            overflow: hidden;
+        }
+        
+        .box_2 {
+            position: absolute;
+            top: 50%;
+            left: auto;
+            right: 0;
+            height: 20vw;
+            width: 20vw;
+            border-radius: 50%;
+            background-color: blue;
+            transform: translateY(-50%);
+        }
+        
+        .main_sec {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        
+        .box_1_in {
+            position: absolute;
+            top: 0;
+            left: 20vw;
+            height: 20vw;
+            width: 20vw;
+            background-color: white;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="main_sec" id="main_section">
+        <div class="box_1" id="box_1_1">
+            <div class="box_1_in" id="box_1_in_1">
+            </div>
+        </div>
+        <div class="box_2" id="box_2_1"></div>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TimelineMax.min.js"></script>
+    <script>
+        var t1 = new TimelineMax();
+
+        t1.to('#box_1_1', 2, {
+            left: '30vw'
+        }, 'abc')
+        t1.to('#box_2_1', 2, {
+            right: '30vw'
+        }, 'abc')
+        t1.to('#box_1_1', 2, {
+            left: '40vw'
+        }, 'abc1')
+        t1.to('#box_2_1', 2, {
+            right: '40vw'
+        }, 'abc1')
+        t1.to('#box_1_in_1', 2, {
+            left: '0vw'
+        }, 'abc1')
+        t1.to('#box_1_1', 1, {
+            left: '45vw',
+            delay: 1
+        }, 'abc2')
+        t1.to('#box_2_1', 1, {
+            right: '45vw',
+            delay: 1
+        }, 'abc2')
+        t1.to('#box_1_in_1', 1, {
+            left: '-10vw',
+            delay: 1
+        }, 'abc2');
+    </script>
+</body>
+
+</html>
